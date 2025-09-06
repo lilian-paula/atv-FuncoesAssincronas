@@ -1,131 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agência de Viagens</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>Viajar Mais</header>
     <h1>Escolha um destino:</h1>
-    <section>
-        <h2>Salvador - BA</h2>
-        <p onclick="carregarDestino('Salvador')"><img src="imagens/salvador1.jpeg" id="salvador"></p>
-    </section>
-    <section>
-        <h2>Natal - RN</h2>
-        <p onclick="carregarDestino('Natal')"><img src="imagens/natal1.jpeg"id="natal"></p>
-    </section>
-    <section>
-        <h2>Santiago - Chile</h2>
-        <p onclick="carregarDestino('Santiago')"><img src="imagens/santiago1.jpeg" id="santiago"></p>
-    </section>
-    <section>
-        <h2>Buenos Aires - Argentina</h2>
-        <p onclick="carregarDestino('BuenosAires')"><img src="imagens/buenosAires1.jpeg" id="buenosAires"></p>
-    </section>
+    <ul>
+      <li onclick="carregarDestino('Salvador')">Salvador</li>
+      <li onclick="carregarDestino('Natal')">Natal</li>
+      <li onclick="carregarDestino('Santiago')">Santiago</li>
+      <li onclick="carregarDestino('BuenosAires')">Buenos Aires</li>
+    </ul>
 
-    <div id="detalhes"></div>
-    <footer>
-        &COPY;2025 Viajar Mais.<br><br>
-    </footer>
+    <div id="viagem"></div>
+
+    <footer>&COPY;2025 Viajar Mais.<br /><br /></footer>
 
     <style>
-        @charset "UTF-8";
+      @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Playwrite+VN:wght@100..400&display=swap");
 
-@font-face {
-    /*Usar o site dafont.com para baixar a fonte e depois extrair*/
-    font-family: 'escrita';
-    src: url('fonts/Deuxieme_Rang_Original.otf') format(truetype);
-    font-weight: normal;
-    font-style: normal;}
+      @font-face {
+        /*Usar o site dafont.com para baixar a fonte e depois extrair*/
+        font-family: "escrita";
+        src: url("fonts/Deuxieme_Rang_Original.otf") format(truetype);
+        font-weight: normal;
+        font-style: normal;
+      }
 
-:root {
-    --cor0: #D8E5F8;
-    --cor1: #B2C7E6;
-    --cor2: #8DA6DE;
-    --cor3: #4C7AC8;
-    --cor4: #3E5189;
-    --cor5: #28407A;
-    --cor6: #25325C;
-    --cor7: #D9C9BA;
-    --cor8: #A78C72; 
-    --cor9: #78614C;
+      :root {
+        --cor0: #d8e5f8;
+        --cor1: #b2c7e6;
+        --cor2: #8da6de;
+        --cor3: #4c7ac8;
+        --cor4: #3e5189;
+        --cor5: #28407a;
+        --cor6: #25325c;
+        --cor7: #d9c9ba;
+        --cor8: #a78c72;
+        --cor9: #78614c;
 
-    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
-    --fonte-destaque: "Playwrite VN", serif;
-}
-    body {
-    background-color: var(--cor9);
-    background: linear-gradient(to right , var(--cor1), transparent);
-    font-family: var(--fonte-padrao);
-    }
+        --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+        --fonte-destaque: "Playwrite VN", serif;
+      }
+      body {
+        background-color: var(--cor9);
+        background: linear-gradient(to right, var(--cor1), transparent);
+        font-family: var(--fonte-padrao);
+      }
 
-    header {
-      color: red;
-      font-size: 50px;
-      text-align: center;
-      margin-top: 20px;
-      font-family: var(--fonte-destaque);
-      font-weight: bold;
-    }
+      header {
+        color: red;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 20px;
+        font-family: var(--fonte-destaque);
+        font-weight: bold;
+      }
 
-    h1 {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+      h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
 
-    #salvador {
+      #salvador {
         width: 230px;
         height: 230px;
-        border: 10px solid black
-    }
+        border: 10px solid black;
+      }
 
-    #natal {
+      #natal {
         width: 230px;
         height: 230px;
-        border: 10px solid black
-    }
+        border: 10px solid black;
+      }
 
-    #santiago {
+      #santiago {
         width: 230px;
         height: 230px;
-        border: 10px solid black
-    }
+        border: 10px solid black;
+      }
 
-    #buenosAires {
+      #buenosAires {
         width: 230px;
         height: 230px;
-        border: 10px solid black
-    }
+        border: 10px solid black;
+      }
 
-    .imagens img {
+      .imagens img {
         width: 450px; /*Define a largura das imagens para 600px*/
         height: 300px; /*Define a altura das imagens para 300px*/
         object-fit: cover; /*Faz com que as imagens preencham o espaço sem distorcer, cortando parte delas se necessário*/
-    }
+      }
     </style>
     <script>
-async function carregarDestino(destino){
-    try{
-        document.getElementById("detalhes").innerHTML = "carregando...";
-        await new Promise(resolve => setTimeout(resolve, 2000));    
-        let mensagens = {
-            "Salvador": "Viva a magia de Salvador - BA!<br>  Que tal explorar as cores, os sabores e a cultura vibrante de uma das cidades mais incríveis do Brasil? Destino: Salvador - Bahia Prepare-se para:✅ Caminhar pelo histórico Pelourinho✅ Sentir a energia do Elevador Lacerda✅ Se encantar com o pôr do sol no Farol da Barra✅ Saborear uma autêntica moqueca baiana✅ Curtir o axé, o samba e a alegria do povo baiano!Pacotes exclusivos com preços imperdíveis!Incluem: passagens, hospedagem, city tour, traslado e muito mais.Salvador te espera de braços abertos! 🤗#PartiuBahia #SalvadorÉDemais",               
-            "Natal": "🌊☀️ Descubra o paraíso em Natal - RN! 🏖️✨Está sonhando com dias de sol, mar cristalino e paisagens de tirar o fôlego?Então o seu próximo destino é Natal, no Rio Grande do Norte!O que te espera em Natal:✅ As incríveis dunas de Genipabu com passeio de buggy “com emoção”✅ O Morro do Careca e as praias encantadoras de Ponta Negra✅ Mergulhos em águas mornas e transparentes em Maracajaú✅ Cultura, gastronomia nordestina e um pôr do sol inesquecível!🎉 Pacotes completos com condições especiais:✈️ Passagens aéreas🏨 Hospedagem com café da manhã🚐 Traslados e city tour incluídos📆 Datas flexíveis e facilidades no pagamento!Natal está te esperando de braços abertos. Viva essa experiência com a gente!#NatalRN #ViajeComAGência #SolENordeste #PartiuNatal",
-            "Santiago": "✈️ Descubra Santiago do Chile com a gente! 🏔️🍷Que tal explorar um dos destinos mais charmosos da América do Sul?Santiago é moderna, vibrante e cercada pela beleza das Cordilheiras dos Andes!O que você vai viver em Santiago:✅ City tour pelos principais pontos históricos e culturais✅ Vista panorâmica do Sky Costanera, o prédio mais alto da América Latina✅ Degustações em vinícolas renomadas no Vale do Maipo 🍇✅ Passeios incríveis para Valparaíso, Viña del Mar e Cajón del Maipo✅ E no inverno... muita neve nas estações de esqui! ⛷️❄️🎒 Pacotes completos com:✈️ Passagens aéreas🏨 Hospedagem confortável🚐 Traslados e passeios guiados🗓️ Datas flexíveis e parcelamento facilitado!🔥 Santiago te espera com paisagens deslumbrantes, cultura e sabores únicos!#PartiuChile #Santiago2025 #ViajeComAGente #DescubraSantiago",
-            "Buenos Aires": "Encante-se com Buenos Aires! Prepare-se para viver dias incríveis na charmosa capital da Argentina!Buenos Aires é apaixonante, elegante e cheia de cultura, gastronomia e história!No seu roteiro:✅ Caminhadas por San Telmo, Recoleta e Palermo✅ Show de tango com jantar típico 💃✅ Visita à Casa Rosada, Obelisco e Puerto Madero✅ Compras na Calle Florida e feiras locais✅ E, claro... muito vinho, empanadas e doce de leite! 🍷🍫🎒 Pacotes completos incluem:✈️ Passagens aéreas🏨 Hospedagem selecionada🚐 Traslados e city tour📆 Datas flexíveis e parcelamento facilitado🌟 Buenos Aires te espera de braços abertos. Viva essa experiência com a gente!#PartiuArgentina #BuenosAires #ViajarÉViver #ViajeComAGente",
-        };
-
-        document.getElementById("detalhes").innerHTML = mensagens[destino];
-    }
-    
-    catch(error){
-        console.error("Erro ao carregar destinos.", error);
-        document.getElementById("detalhes").innerHTML = "Erro ao carregar destinos.";
-    }
-}
+      async function carregarDestino(passeio) {
+        try {
+          document.getElementById("viagem").innerHTML ="carregando informações do destino.";
+          await new Promise((resolve) => setTimeout(resolve, 3000)); //setTimeout" Simula um atraso de 3 segundos //
+          let info = {
+            Salvador:
+              "Salvador, a vibrante capital da Bahia, é famosa por sua rica cultura afro-brasileira, arquitetura colonial e praias deslumbrantes. Explore o Pelourinho, um bairro histórico repleto de igrejas barrocas e casas coloridas, e desfrute da animada música ao vivo e da culinária baiana. As praias de Salvador, como Porto da Barra e Praia do Forte, oferecem águas cristalinas e areias douradas, perfeitas para relaxar ou praticar esportes aquáticos. Não perca o Carnaval de Salvador, uma das maiores festas de rua do mundo, onde a música e a dança tomam conta da cidade.",
+            Natal:
+              "Natal, a capital do Rio Grande do Norte, é conhecida por suas praias paradisíacas, dunas impressionantes e clima ensolarado durante todo o ano. A Praia de Ponta Negra é um dos destinos mais populares, com sua icônica duna do Morro do Careca oferecendo vistas panorâmicas do oceano. Explore as dunas de Genipabu em um passeio de buggy emocionante ou relaxe nas águas mornas das lagoas naturais próximas. Natal também é rica em cultura e história, com atrações como o Forte dos Reis Magos e o Centro Histórico que refletem a herança colonial da cidade.",
+            Santiago:
+              "Santiago, a capital do Chile, é uma cidade moderna cercada pela Cordilheira dos Andes. Oferece uma mistura de cultura, gastronomia e belas paisagens, com atrações como o Cerro San Cristóbal, o bairro Bellavista e museus históricos.",
+            BuenosAires:
+              "Buenos Aires, a capital da Argentina, é famosa por sua arquitetura elegante, vida noturna vibrante e rica tradição cultural. Explore bairros como San Telmo e Palermo, visite a Casa Rosada e desfrute de um autêntico show de tango.",
+          };
+          document.getElementById("viagem").innerHTML = info[passeio];
+        } catch (error) {
+          document.getElementById("viagem").innerHTML =
+            "Erro ao carregar as informações do destino, tente novamente mais tarde.";
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
